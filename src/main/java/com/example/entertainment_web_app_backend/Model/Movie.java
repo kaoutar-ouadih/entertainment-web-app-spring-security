@@ -1,6 +1,10 @@
 package com.example.entertainment_web_app_backend.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Movie {
@@ -19,8 +23,13 @@ public class Movie {
     @ManyToOne
     private Category category;
 
+    @ManyToMany(mappedBy = "movies")
+    @JsonIgnore
+    private Set<Users> users = new HashSet<>();
+
     public Movie(){
     }
+
     public Movie(String title, String thumbnail_trending_large, String thumbnail_regular_large, int year, String rating, boolean bookmarked, boolean trending, Category category) {
         this.title = title;
         this.thumbnail_trending_large = thumbnail_trending_large;
@@ -31,6 +40,27 @@ public class Movie {
         this.trending = trending;
         this.category = category;
     }
+
+    public Movie(String title, String thumbnail_trending_large, String thumbnail_regular_large, int year, String rating, boolean bookmarked, boolean trending, Category category, Set<Users> users) {
+        this.title = title;
+        this.thumbnail_trending_large = thumbnail_trending_large;
+        this.thumbnail_regular_large = thumbnail_regular_large;
+        this.year = year;
+        this.rating = rating;
+        this.bookmarked = bookmarked;
+        this.trending = trending;
+        this.category = category;
+        this.users = users;
+    }
+
+    public Set<Users> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<Users> users) {
+        this.users = users;
+    }
+
 
     public int getId() {
         return id;
