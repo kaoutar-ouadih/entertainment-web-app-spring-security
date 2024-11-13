@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:5173"})
+@CrossOrigin(origins = {"https://entertainment-web-app-frontend-s.onrender.com"})
 @RequestMapping("/users")
 public class Usercontroller {
     private final UserService userService;

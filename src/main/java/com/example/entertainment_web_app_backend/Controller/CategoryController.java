@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:5173"})
+@CrossOrigin(origins = {"https://entertainment-web-app-frontend-s.onrender.com"})
 @RequestMapping("/categories")
 public class CategoryController {
     private final CategoryService categoryService;
